@@ -1,4 +1,3 @@
-# irish-portfolio
 # Irish San Jose
 
 Data Analyst | SQL | Python | Power BI
