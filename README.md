@@ -1,4 +1,4 @@
-# 👩🏻‍💻 Irish San Jose
+# Irish San Jose
 
 Data Analyst | SQL | Python | Power BI | Forecasting  
 
