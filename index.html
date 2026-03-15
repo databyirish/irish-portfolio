@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irish San Jose | Data Analyst Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(180deg, #f6f8fb 0%, #eef2f7 100%);
+      color: #1f2937;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #dbe3ee;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #475569;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #1d4e89;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #1d4e89;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 50px 0;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .hero-text h3 {
+      color: #1d4e89;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: #0f172a;
+    }
+
+    .hero-text h1 span {
+      color: #1d4e89;
+    }
+
+    .hero-text p {
+      font-size: 1.02rem;
+      color: #475569;
+      max-width: 650px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1d4e89, #16385f);
+      color: white;
+      box-shadow: 0 10px 20px rgba(29, 78, 137, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(29, 78, 137, 0.24);
+    }
+
+    .btn-secondary {
+      border: 2px solid #c7d4e4;
+      color: #1d4e89;
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      background: #f3f7fb;
+      transform: translateY(-2px);
+    }
+
+    .hero-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #d9e3ef;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+      animation: floatUp 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1d4e89, #60a5fa);
+    }
+
+    .mini-card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .mini-card:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    .mini-card h4 {
+      font-size: 0.9rem;
+      color: #1e3a5f;
+      margin-bottom: 6px;
+    }
+
+    .mini-card p {
+      font-size: 0.88rem;
+      color: #64748b;
+    }
+
+    .profile-box {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid #d9e3ef;
+      border-radius: 30px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(96,165,250,0.16), transparent 70%);
+    }
+
+    .profile-img {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      object-fit: cover;
+      display: block;
+      border: 8px solid white;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+      background: #e5edf7;
+    }
+
+    .profile-box h2 {
+      color: #1e3a5f;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+
+    .profile-box p {
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      background: white;
+      color: #1d4e89;
+      border: 1px solid #d5e0ed;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      background: #f3f7fb;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 80px 0 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: #1e3a5f;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #64748b;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .about-box,
+    .experience-box,
+    .contact-box {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid #d9e3ef;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+
+    .about-box p,
+    .contact-box p,
+    .experience-box p {
+      color: #475569;
+      line-height: 1.9;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card,
+    .project-card,
+    .cert-card {
+      background: white;
+      border: 1px solid #d9e3ef;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before,
+    .project-card::before,
+    .cert-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1d4e89, #60a5fa);
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .cert-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .skill-card h3,
+    .project-card h3,
+    .cert-card h3 {
+      color: #1e3a5f;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .skill-card p,
+    .project-card p,
+    .cert-card p {
+      color: #64748b;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .experience-box h3 {
+      color: #1e3a5f;
+      margin-bottom: 6px;
+    }
+
+    .experience-box .tag {
+      display: inline-block;
+      background: #f3f7fb;
+      color: #1d4e89;
+      border: 1px solid #d9e3ef;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin: 10px 8px 0 0;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .project-card a,
+    .contact-box a,
+    .cert-card a {
+      color: #1d4e89;
+      font-weight: 600;
+    }
+
+    .project-card a:hover,
+    .contact-box a:hover,
+    .cert-card a:hover {
+      color: #16385f;
+    }
+
+    .resume-note {
+      margin-top: 14px;
+      font-size: 0.92rem;
+      color: #64748b;
+    }
+
+    .cert-image {
+      width: 100%;
+      margin-top: 12px;
+      border-radius: 14px;
+      border: 1px solid #d9e3ef;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 950px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-box {
+        max-width: 420px;
+        margin: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-text h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-wrap {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-wrap">
+      <div class="logo">Irish San Jose</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div class="hero-text">
+        <h3>Data Analyst | Business Analytics Student</h3>
+        <h1>Hi, I'm <span>Irish San Jose</span></h1>
+        <p>
+          I am an Information Technology student with hands-on experience in data analysis,
+          forecasting, SQL, Python automation, Excel, Google Sheets, and Power BI. I enjoy
+          transforming data into meaningful insights and building practical solutions that
+          support better decision-making.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+
+        <div class="hero-cards">
+          <div class="mini-card">
+            <h4>SQL & Data Extraction</h4>
+            <p>Used DBeaver and SQL to extract, filter, and analyze business data for reporting tasks.</p>
+          </div>
+          <div class="mini-card">
+            <h4>Python Automation</h4>
+            <p>Automated data processing tasks using Python and Spyder to improve workflow efficiency.</p>
+          </div>
+          <div class="mini-card">
+            <h4>Forecasting & Analytics</h4>
+            <p>Supported forecasting activities and transformed raw datasets into useful insights.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-box">
+        <img src="images/ishiii.jpg" alt="Irish San Jose" class="profile-img">
+        <h2>Irish San Jose</h2>
+        <p>Data Analyst | Business Analytics Student</p>
+
+        <div class="socials">
+          <a href="https://github.com/databyirish" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/irish-san-jose-452a06277/" target="_blank">LinkedIn</a>
+          <a href="mailto:irish.sanjose58@gmail.com">Email</a>
+        </div>
+
+        <div class="hero-buttons" style="justify-content:center; margin-top: 18px; margin-bottom: 10px;">
+          <a href="files/SanJose,Irish-Resume.pdf" target="_blank" class="btn btn-primary">View Resume</a>
+          <a href="files/SanJose,Irish-Resume.pdf" download class="btn btn-secondary">Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Learn more about my academic background, experience, and career goals.</p>
+      </div>
+      <div class="about-box">
+        <p>
+          I am currently pursuing a Bachelor of Science in Information Technology with a major in Business Analytics.
+          I completed a 420-hour Data Analyst internship at Phoenix Petroleum Philippines, Inc., where I worked on
+          forecasting, SQL-based data extraction, Python automation, and reporting tasks using Excel, Google Sheets,
+          and Power BI. I am passionate about continuous learning and building a career in data analytics and business intelligence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <p>My technical and professional strengths in analytics, reporting, and data management.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Data Analysis & Forecasting</h3>
+          <p>Analyzing trends, organizing datasets, and supporting better decisions through data-driven insights.</p>
+        </div>
+        <div class="skill-card">
+          <h3>SQL & Database Management</h3>
+          <p>Writing queries, extracting records, and managing structured data for analysis and reporting.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Python Automation</h3>
+          <p>Using Python and Spyder to automate repetitive processes, clean data, and improve efficiency.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Excel, Google Sheets & Power BI</h3>
+          <p>Creating dashboards, summaries, and reports to present insights in a clear and practical way.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Data Cleaning & Management</h3>
+          <p>Preparing and organizing raw data to make it accurate, usable, and ready for reporting.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Communication & Collaboration</h3>
+          <p>Working effectively with teams, learning quickly, and communicating ideas clearly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>My internship experience and the tools I used in real-world business data tasks.</p>
+      </div>
+      <div class="experience-box">
+        <h3>Data Analyst Intern</h3>
+        <p><strong>Phoenix Petroleum Philippines, Inc.</strong></p>
+        <p style="margin-top: 12px;">
+          Supported forecasting activities, extracted data using DBeaver and SQL, built automation workflows in Python,
+          and used Excel, Google Sheets, and Power BI for business reporting and analysis. This experience strengthened
+          my technical skills, attention to detail, and understanding of real-world data processes.
+        </p>
+        <span class="tag">SQL</span>
+        <span class="tag">DBeaver</span>
+        <span class="tag">Python</span>
+        <span class="tag">Spyder</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Forecasting</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Selected projects that reflect my academic work, technical skills, and portfolio development.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Validation of Waste Analysis Characterization Study of MENRO Pandi</h3>
+          <p>
+            Developed a web platform that validates MENRO Pandi’s Waste Analysis and Characterization Study using
+            Time Series Analysis and Linear Regression to support data-driven waste management decisions.
+          </p>
+          <p style="margin-top: 10px;"><a href="https://ecotrackpandi.com" target="_blank">Visit Project</a></p>
+        </div>
+
+        <div class="project-card">
+          <h3>GitHub Portfolio</h3>
+          <p>
+            A collection of my technical work, portfolio files, and project outputs that demonstrate my growth in analytics,
+            data handling, and development.
+          </p>
+          <p style="margin-top: 10px;"><a href="https://github.com/databyirish" target="_blank">View GitHub</a></p>
+        </div>
+
+        <div class="project-card">
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            Designed and developed a personal portfolio website to present my skills, education, experience,
+            certificates, and featured projects in one professional online space.
+          </p>
+          <p style="margin-top: 10px;"><a href="https://github.com/databyirish" target="_blank">View Source</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Certifications</h2>
+        <p>Certificates and learning experiences that support my professional growth.</p>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h3>Data Analyst Internship Certificate</h3>
+          <p>Phoenix Petroleum Philippines, Inc. – 420 Hours Internship Completion</p>
+          <p style="margin-top: 10px;">
+            <a href="certificates/phoenix-internship-certificate.pdf" target="_blank">View Certificate</a>
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <h3>Salesforce Supported Virtual Internship Program</h3>
+          <p>SmartBridge – Credential ID: SWSFVIPAD2026-0014</p>
+          <img src="images/salesforce-certificate.jpg" alt="Salesforce Certificate" class="cert-image">
+        </div>
+
+        <div class="cert-card">
+          <h3>HSK Level 1 – Chinese Proficiency Test</h3>
+          <p>Center for Language Education and Cooperation</p>
+          <p style="margin-top: 10px;">
+            <a href="certificates/hsk-certificate.pdf" target="_blank">View Certificate</a>
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <h3>iLEAP Course on Intellectual Property</h3>
+          <p>Intellectual Property Office of the Philippines</p>
+          <p style="margin-top: 10px;">
+            <a href="certificates/ileap-certificate.pdf" target="_blank">View Certificate</a>
+          </p>
+        </div>
+
+        <div class="cert-card">
+          <h3>International Industrial Talents Education Special Program</h3>
+          <p>International Talent Circulation Base – Bulacan</p>
+          <img src="images/intense-program.jpg" alt="INTENSE Program Certificate" class="cert-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Me</h2>
+        <p>Feel free to connect with me for opportunities, collaborations, or project discussions.</p>
+      </div>
+      <div class="contact-box">
+        <p><strong>Email:</strong> <a href="mailto:irish.sanjose58@gmail.com">irish.sanjose58@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/irish-san-jose-452a06277/" target="_blank">www.linkedin.com/in/irish-san-jose-452a06277/</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/databyirish" target="_blank">github.com/databyirish</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Irish San Jose. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
